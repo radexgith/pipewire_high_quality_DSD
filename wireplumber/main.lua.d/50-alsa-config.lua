@@ -1,17 +1,38 @@
 alsa = {
     capture = {
-        ["period-size"] = 768,
-        ["buffer-size"] = 4416,
+        ["period-size"] = 128,
+        ["buffer-size"] = 512,
     },
     playback = {
-        ["period-size"] = 768,
-        ["buffer-size"] = 4416,
+        ["period-size"] = 160,
+        ["buffer-size"] = 640,
     },
 }
 
+--alsa = {
+--    capture = {
+--        ["period-size"] = 128,
+--        ["buffer-size"] = 640,
+--    },
+--    playback = {
+--        ["period-size"] = 192,
+--        ["buffer-size"] = 960,
+--    },
+--}
+
 alsa_monitor.enabled = true
 
-alsa_monitor.properties = {
+alsa-monitor.properties = {
+  ["api.alsa.period-size"] = 256,
+  ["api.alsa.period-num"] = 3,
+  ["api.alsa.headroom"] = 0,
+  ["api.alsa.disable-mmap"] = false,
+  ["api.alsa.disable-batch"] = false,
+  ["api.alsa.use-chmap"] = false,
+  ["audio.format"] = "S32LE",
+  ["audio.rate"] = 192000,
+  ["audio.channels"] = 8,
+  ["audio.position"] = "FL,FR,FC,LFE,BL,BR,SL,SR"
   -- Create a JACK device. This is not enabled by default because
   -- it requires that the PipeWire JACK replacement libraries are
   -- not used by the session manager, in order to be able to
@@ -134,7 +155,7 @@ alsa_monitor.rules = {
       ["monitor.channel-volumes"] = false,
       ["resample.quality"]       = 10,       -- Höchste Qualität für Resampling
       ["resample.disable"]       = false,
-      ["channelmix.normalize"]   = true,
+      ["channelmix.normalize"]   = false,
       ["channelmix.mix-lfe"]     = true,
       ["channelmix.upmix"]       = true,
       ["channelmix.upmix-method"] = "psd",   -- Kann auch "none" oder "simple" sein, je nach Bedarf
@@ -146,11 +167,11 @@ alsa_monitor.rules = {
       ["channelmix.disable"]     = false,
       ["dither.noise"]           = 0,
       ["dither.method"]          = "shaped5",  -- Für hochwertige Dithering
-      ["audio.channels"]         = 2,
+      ["audio.channels"]         = 8,
       ["audio.format"]           = "S32LE",    -- Höhere Bit-Tiefe für bessere Qualität
       ["audio.rate"]             = 192000,      -- Höhere Abtastrate für bessere Qualität
       ["audio.allowed-rates"]    = "48000,96000,192000",
-      ["audio.position"]         = "FL,FR",
+      ["audio.position"]         = "FL,FR,FC,LFE,BL,BR,SL,SR",
       ["api.alsa.period-size"]   = 256,     -- Kleinere Period-Größe für geringere Latenz
       ["api.alsa.period-num"]    = 2,
       ["api.alsa.headroom"]      = 0,
