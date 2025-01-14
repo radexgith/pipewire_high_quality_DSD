@@ -1,11 +1,11 @@
 alsa = {
     capture = {
-        ["period-size"] = 128,
-        ["buffer-size"] = 512,
+        ["period-size"] = 8192,
+        ["buffer-size"] = 16384,
     },
     playback = {
-        ["period-size"] = 160,
-        ["buffer-size"] = 640,
+        ["period-size"] = 8192,
+        ["buffer-size"] = 16384,
     },
 }
 
@@ -23,14 +23,14 @@ alsa = {
 alsa_monitor.enabled = true
 
 alsa-monitor.properties = {
-  ["api.alsa.period-size"] = 256,
+  ["api.alsa.period-size"] = 16384,
   ["api.alsa.period-num"] = 3,
   ["api.alsa.headroom"] = 0,
   ["api.alsa.disable-mmap"] = false,
   ["api.alsa.disable-batch"] = false,
   ["api.alsa.use-chmap"] = false,
   ["audio.format"] = "S32LE",
-  ["audio.rate"] = 192000,
+  ["audio.rate"] = 2822400,
   ["audio.channels"] = 8,
   ["audio.position"] = "FL,FR,FC,LFE,BL,BR,SL,SR"
   -- Create a JACK device. This is not enabled by default because
@@ -65,8 +65,8 @@ alsa-monitor.properties = {
   -- These properties override node defaults when running in a virtual machine.
   -- The rules below still override those.
   ["vm.node.defaults"] = {
-    ["api.alsa.period-size"] = 1024,
-    ["api.alsa.headroom"] = 8192,
+    ["api.alsa.period-size"] = 8192,
+    ["api.alsa.headroom"] = 16384,
   },
 }
 
@@ -139,11 +139,11 @@ alsa_monitor.rules = {
     matches = {
       {
         -- Matches all sources.
-        { "node.name", "matches", "alsa_input.*" },
+        { "alsa_output.usb-Creative_Technology_Ltd_Sound_Blaster_X4", "matches", "alsa_input.usb-Creative_Technology_Ltd_Sound_Blaster_X4_90DA9E7EB96EAA24-03.pro-input-0" },
       },
       {
         -- Matches all sinks.
-        { "node.name", "matches", "alsa_output.*" },
+        { "alsa_output.usb-Creative_Technology_Ltd_Sound_Blaster_X4", "matches", "alsa_output.usb-Creative_Technology_Ltd_Sound_Blaster_X4_90DA9E7EB96EAA24-03.analog-surround-71" },
       },
     },
     apply_properties = {
@@ -169,10 +169,10 @@ alsa_monitor.rules = {
       ["dither.method"]          = "shaped5",  -- Für hochwertige Dithering
       ["audio.channels"]         = 8,
       ["audio.format"]           = "S32LE",    -- Höhere Bit-Tiefe für bessere Qualität
-      ["audio.rate"]             = 192000,      -- Höhere Abtastrate für bessere Qualität
-      ["audio.allowed-rates"]    = "48000,96000,192000",
+      ["audio.rate"]             = 2822400,      -- Höhere Abtastrate für bessere Qualität
+      ["audio.allowed-rates"]    = "352800,2822400,5644800",
       ["audio.position"]         = "FL,FR,FC,LFE,BL,BR,SL,SR",
-      ["api.alsa.period-size"]   = 256,     -- Kleinere Period-Größe für geringere Latenz
+      ["api.alsa.period-size"]   = 16384,     -- Kleinere Period-Größe für geringere Latenz
       ["api.alsa.period-num"]    = 2,
       ["api.alsa.headroom"]      = 0,
       ["api.alsa.start-delay"]   = 0,
