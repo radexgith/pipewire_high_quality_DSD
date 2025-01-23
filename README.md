@@ -1,4 +1,4 @@
 # pipewire_high_quality
-#7.1 
-in DSD quality in 5644800 # For DSD128 for Pipewire, pipewire-pulse
+Audio config for home/NAME/.config
+in DSD quality in 11.2 MHz or 256fs for Pipewire, pipewire-pulse. wireplumber
 fantastic sound also in CD quality

@@ -13,7 +13,7 @@ context.properties = {
     #library.name.system                   = support/libspa-support
     #context.data-loop.library.name.system = support/libspa-support
     #support.dbus                          = true
-    link.max-buffers                      = 320
+    link.max-buffers                      = 65536
     #link.max-buffers                       = 16                       # version < 3 clients can't handle more
     mem.warn-mlock                        = true
     mem.allow-mlock                       = true
@@ -26,13 +26,13 @@ context.properties = {
     core.name   = pipewire-0        # core name and socket name
 
     ## Properties for the DSP configuration.
-    default.clock.rate          = 352800  # Für DSD64
-    default.clock.allowed-rates = [ 352800, 2822400, 5644800, 11289600, 22579200 ]
-    default.clock.quantum       = 448
-    default.clock.min-quantum   = 384
-    default.clock.max-quantum   = 1024
-    default.clock.quantum-limit = 512
-    default.clock.quantum-floor = 8
+    default.clock.rate          = 11289600  # Für DSD64
+    default.clock.allowed-rates = [ 192000, 352800, 2822400, 5644800, 11289600 ]
+    default.clock.quantum       = 131072
+    default.clock.min-quantum   = 32768
+    default.clock.max-quantum   = 131072
+    default.clock.quantum-limit = 65536
+    default.clock.quantum-floor = 2048
     #default.video.width         = 640
     #default.video.height        = 480
     #default.video.rate.num      = 25
@@ -43,7 +43,7 @@ context.properties = {
     #
     # These overrides are only applied when running in a vm.
     vm.overrides = {
-        default.clock.min-quantum = 256
+        default.clock.min-quantum = 16384
     }
 
     # keys checked below to disable module loading
@@ -225,11 +225,11 @@ context.objects = [
             node.description = "Sound Blaster X4 Surround 7.1 Output"
             media.class = "Audio/Sink"
             api.alsa.path = "surround71:4"
-            api.alsa.period-size = 128
+            api.alsa.period-size = 65536
             api.alsa.disable-mmap = false
             audio.channels = 8
             audio.format = "S32LE"
-            audio.rate = 352800
+            audio.rate = 5644800
             audio.position = [ FL FR FC LFE RL RR SL SR ]
         }
     }

@@ -1,11 +1,11 @@
 alsa = {
     capture = {
-        ["period-size"] = 88200,
-        ["buffer-size"] = 176400,
+        ["period-size"] = 16384,
+        ["buffer-size"] = 32768,
     },
     playback = {
-        ["period-size"] = 88200,
-        ["buffer-size"] = 176400,
+        ["period-size"] = 32768,
+        ["buffer-size"] = 65536,
     },
 }
 
@@ -23,17 +23,16 @@ alsa = {
 alsa_monitor.enabled = true
 
 alsa-monitor.properties = {
-  ["api.alsa.period-size"] = 176400,
+  ["api.alsa.period-size"] = 32768,
   ["api.alsa.period-num"] = 3,
   ["api.alsa.headroom"] = 0,
   ["api.alsa.disable-mmap"] = false,
   ["api.alsa.disable-batch"] = false,
   ["api.alsa.use-chmap"] = false,
   ["audio.format"] = "S32LE",
-  ["audio.rate"] = 11289600,
-  ["audio.channels"] = 2,
-  ["audio.position"] = "FL,FR"
-  -- ["audio.position"] = "FL,FR,FC,LFE,BL,BR,SL,SR"
+  ["audio.rate"] = 2822400,
+  ["audio.channels"] = 8,
+  ["audio.position"] = "FL,FR,FC,LFE,BL,BR,SL,SR"
   -- Create a JACK device. This is not enabled by default because
   -- it requires that the PipeWire JACK replacement libraries are
   -- not used by the session manager, in order to be able to
@@ -66,8 +65,8 @@ alsa-monitor.properties = {
   -- These properties override node defaults when running in a virtual machine.
   -- The rules below still override those.
   ["vm.node.defaults"] = {
-    ["api.alsa.period-size"] = 88200,
-    ["api.alsa.headroom"] = 176400,
+    ["api.alsa.period-size"] = 16384,
+    ["api.alsa.headroom"] = 32768,
   },
 }
 
@@ -154,27 +153,27 @@ alsa_monitor.rules = {
       ["priority.session"]       = 100,
       ["node.pause-on-idle"]     = false,
       ["monitor.channel-volumes"] = false,
-      ["resample.quality"]       = 12,       -- Höchste Qualität für Resampling
+      ["resample.quality"]       = 10,       -- Höchste Qualität für Resampling
       ["resample.disable"]       = true,
       ["channelmix.normalize"]   = false,
-      ["channelmix.mix-lfe"]     = true,
-      ["channelmix.upmix"]       = true,
-      ["channelmix.upmix-method"] = "none",   -- Kann auch "none" oder "simple" sein, je nach Bedarf
+      ["channelmix.mix-lfe"]     = false,
+      ["channelmix.upmix"]       = false,
+      ["channelmix.upmix-method"] = "psd",   -- Kann auch "none" oder "simple" sein, je nach Bedarf
       ["channelmix.lfe-cutoff"]  = 150,
       ["channelmix.fc-cutoff"]   = 12000,
       ["channelmix.rear-delay"]  = 12.0,
       ["channelmix.stereo-widen"] = 0.0,
       ["channelmix.hilbert-taps"] = 0,
-      ["channelmix.disable"]     = true,
+      ["channelmix.disable"]     = false,
       ["dither.noise"]           = 0,
-      ["dither.method"]          = "triangle",  -- Für hochwertige Dithering
-      ["audio.channels"]         = 2,
+      ["dither.method"]          = "shaped5",  -- Für hochwertige Dithering
+      ["audio.channels"]         = 8,
       ["audio.format"]           = "S32LE",    -- Höhere Bit-Tiefe für bessere Qualität
-      ["audio.rate"]             = 11289600,      -- Höhere Abtastrate für bessere Qualität
-      ["audio.allowed-rates"]    = "352800,2822400,5644800,11289600",
-      ["audio.position"]         = "FL,FR"
-      ["api.alsa.period-size"]   = 1411200,     -- Kleinere Period-Größe für geringere Latenz
-      ["api.alsa.period-num"]    = 1,
+      ["audio.rate"]             = 5644800,      -- Höhere Abtastrate für bessere Qualität
+      ["audio.allowed-rates"]    = "352800,2822400,5644800",
+      ["audio.position"]         = "FL,FR,FC,LFE,BL,BR,SL,SR",
+      ["api.alsa.period-size"]   = 65536,     -- Kleinere Period-Größe für geringere Latenz
+      ["api.alsa.period-num"]    = 2,
       ["api.alsa.headroom"]      = 0,
       ["api.alsa.start-delay"]   = 0,
       ["api.alsa.disable-mmap"]  = false,
@@ -182,7 +181,7 @@ alsa_monitor.rules = {
       ["api.alsa.use-chmap"]     = false,
       ["api.alsa.multirate"]     = true,
       ["latency.internal.rate"]  = 0,
-      ["latency.internal.ns"]    = 31000000,  -- 90 ms Latenz
+      ["latency.internal.ns"]    = 3500000,  -- 1 ms Latenz
       ["clock.name"]             = "api.alsa.0",
       ["session.suspend-timeout-seconds"] = 0,  -- 0 disables suspend
 

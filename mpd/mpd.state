@@ -1,5 +1,5 @@
-sw_volume: 100
-audio_device_state:1:surround71:CARD=X4,DEV=0
+sw_volume: 0
+audio_device_state:1:sysdefault:CARD=X4
 state: stop
 random: 0
 repeat: 0
@@ -9,6 +9,10 @@ crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-song_begin: http://127.0.0.1:41583/home/rettig/Musik/Baltimore%20Symphony%20Orchestra,%20Sergiu%20Comissiona/Felix%20Mendelssohn_%20Symphonies%20Nos.%204%20Italian,%205%20Reformation%20(AIFF%20192-24)/01-04%20III.%20Con%20moto%20moderato%20(Remastered%202024).aif?album=Felix%20Mendelssohn:%20Symphonies%20Nos.%204%20%22Italian%22,%205%20%22Reformation%22%20%26%20The%20Hebrides%20Overture%20(Remastered%202024)&artist=Baltimore%20Symphony%20Orchestra%20%26%20Sergiu%20Comissiona&albumartist=Baltimore%20Symphony%20Orchestra%20%26%20Sergiu%20Comissiona&composer=Felix%20Mendelssohn&title=Symphony%20No.%204%20in%20A%20Major,%20Op.%2090,%20MWV%20N16%20%22Italian%22:%20III.%20Con%20moto%20moderato%20(Remastered%202024)&genre=Classical&disc=1&year=1976&time=376&track=4&id=-1&cantata=song
+song_begin: http://127.0.0.1:41583/home/rettig/Musik/Haydn%20%20from%20Big%20House%20[DSD%20EP]%20-%20PTC5187101/DSD%2064fs%20-%202ch/05.%20String%20Quartet%20No.%2023%20in%20F%20Minor%20-%20I.%20Allegro%20moderato%20DSD%2064fs%20-%202ch.dsf?id=-1&cantata=song
+song_end
+song_begin: http://127.0.0.1:41583/home/rettig/Musik/Haydn%20%20from%20Big%20House%20[DSD%20EP]%20-%20PTC5187101/DSD%2064fs%20-%202ch/06.%20String%20Quartet%20No.%2023%20in%20F%20Minor%20-%20II.%20Menuetto%20-%20Trio%20DSD%2064fs%20-%202ch.dsf?id=-1&cantata=song
+song_end
+song_begin: http://127.0.0.1:41583/home/rettig/Musik/Haydn%20%20from%20Big%20House%20[DSD%20EP]%20-%20PTC5187101/DSD%2064fs%20-%202ch/07.%20String%20Quartet%20No.%2023%20in%20F%20Minor%20-%20III.%20Adagio%20DSD%2064fs%20-%202ch.dsf?id=-1&cantata=song
 song_end
 playlist_end
